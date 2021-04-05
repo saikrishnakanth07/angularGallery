@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary docs-navbar-header">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand " href="#">Gallery App</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="mat-focus-indicator docs-button mat-button mat-button-base" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" *ngIf="userName" >
+        <a class="mat-focus-indicator docs-button mat-button mat-button-base"  routerLink="gallery">Gallery</a>
+      </li>
+      <li class="nav-item">
+        <a class="mat-focus-indicator docs-button mat-button mat-button-base" routerLink="about">About</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav my-2 my-lg-0" *ngIf="!userName">
+      <li class="nav-item active">
+        <a class="mat-focus-indicator docs-button mat-button mat-button-base" [routerLink]="'login'">Log in <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="mat-focus-indicator docs-button mat-button mat-button-base" [routerLink]="'register'">Register<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <button mat-button [matMenuTriggerFor]="menu" *ngIf="userName" >
+     <span class="material-icons">
+account_circle
+     </span><span>{{userName}}</span></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="logOutUser()"><mat-icon>exit_to_app</mat-icon>
+        <label>Logout</label></button>
+    </mat-menu>
+  </div>
+</nav>

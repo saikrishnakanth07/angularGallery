@@ -1,0 +1,23 @@
+<div class="main-root">
+  <app-top-nav-bar class="mat-elevation-z6"></app-top-nav-bar>
+  <mat-card *ngIf="showLabels">
+
+    <mat-button-toggle-group #group="matButtonToggleGroup"   (change)="onUserInput(group.value)">
+      <ng-container *ngFor="let option of labels let i = index  ">
+        <mat-button-toggle value='{{option}}' [disabled]="i >= 4 && !loginFlag" >
+          <span>{{option}}</span>
+        </mat-button-toggle>
+      </ng-container>
+    </mat-button-toggle-group>
+    <mat-form-field class="full-width-input" style="float:right;" *ngIf="loginFlag">
+      <input matInput placeholder="Search" [(ngModel)]="selected">
+       <mat-icon style="cursor: pointer" matSuffix (click)="onUserInput(selected)">search</mat-icon>
+    </mat-form-field>
+  </mat-card>
+
+
+  <div class="main-template">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer-bar></app-footer-bar>
+</div>

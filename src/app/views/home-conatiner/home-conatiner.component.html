@@ -1,0 +1,9 @@
+<div class="grid-container">
+   <div *ngFor="let img of imageDataRaw | paginate: { itemsPerPage: 10, currentPage: p };let i=index;" >
+     <img [src]="img.src" [lightbox]="i">
+     <p>User : {{img.caption}}</p>
+   </div>
+</div>
+<div>
+
+</div>
